@@ -1,5 +1,5 @@
 #!/bin/sh
-# Purpose: free-air gravity of Mexico
+# Purpose: magnetic anomaly EMAG2 for Mexico
 # GMT modules: gmtset, gmtdefaults, img2grd, makecpt, grdimage, psscale, grdcontour, psbasemap, gmtlogo, psconvert, pscoast
 # http://soliton.vm.bytemark.co.uk/pub/cpt-city/h5/index.html
 
