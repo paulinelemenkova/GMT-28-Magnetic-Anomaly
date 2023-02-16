@@ -32,7 +32,8 @@ gdalinfo cf_mag_wdmam.nc  -stats
 #gmt makecpt -Cwysiwyg.cpt -T-921/371 > colors.cpt
 
 #gmt makecpt -C@earth_wdmam.cpt -T-921/371 > colors.cpt
-gmt makecpt -Cjet -T-933/375 > colors.cpt
+#gmt makecpt -Cjet -T-933/375 > colors.cpt
+gmt makecpt -Cmag -T-933/375 > colors.cpt
 #gmt makecpt --help
 
 #-Ic Reverse sense of color table spectrum
@@ -43,7 +44,7 @@ ps=Magnet_CF_wdmam.ps
 gmt grdimage cf_mag_wdmam.nc -Ccolors.cpt -R14/28/2/11.5 -JM6.5i -P -I+a15+ne0.75 -t30 -Xc -K > $ps
 
 # Add isolines
-gmt grdcontour cf_mag_wdmam.nc  -R -J -C100 -Wthinnest -O -K >> $ps
+gmt grdcontour cf_mag_wdmam.nc  -R -J -C50 -Wthinnest,darkbrown -O -K >> $ps
 
 #####################################################################
 # CLIPPING
@@ -55,7 +56,7 @@ gmt psclip -R14/28/2/11.5 -JM6.5i CAR.txt -O -K >> $ps
 # Add raster image
 gmt grdimage cf_mag_wdmam.nc -Ccolors.cpt -R14/28/2/11.5 -JM6.5i -I+a15+ne0.75 -Xc -P -O -K >> $ps
 # Add isolines
-gmt grdcontour cf_mag_wdmam.nc -R -J -C100 -A200+f7p,26,darkbrown -Wthinner,darkbrown -O -K >> $ps
+gmt grdcontour cf_mag_wdmam.nc -R -J -C100 -A200+f7p,26,darkbrown -Wthinnest,darkbrown -O -K >> $ps
 # Add coastlines, borders, rivers
 gmt pscoast -R -J \
     -Ia/thinner,blue -Na -N1/thickest,tomato -W0.1p -Df -O -K >> $ps
@@ -80,7 +81,7 @@ gmt psscale -Dg14/1.0+w16.5c/0.4c+h+o0.0/0i+ml+e -R -J -Ccolors.cpt \
     --FONT_LABEL=9p,0,black \
     --FONT_ANNOT_PRIMARY=7p,0,black \
     --FONT_TITLE=8p,25,black \
-    -Bg100f20a100+l"Color scale 'jet' Dark to light blue, white, yellow and red [C=RGB, -T-933/375], nanoTesla" \
+    -Bg100f20a100+l"Color scale 'mag' GMT cpt for magnetic anomaly maps [C=RGB, -T-933/375], nanoTesla" \
     -I0.2 -By+l"nT" -O -K >> $ps
 
 # Add scale, directional rose
